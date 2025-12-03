@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "WebWaybar",
+  "version": "1.0",
+  "description": "Waybar-style overlay on every webpage",
+  "permissions": [],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["style.css"]
+    }
+  ]
+}
+
