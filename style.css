@@ -1,0 +1,73 @@
+#barrr{
+  position: fixed;
+  width:60px;
+  height:700px;
+  background-color: rgb(54, 55, 55);
+  top:120px;
+  left: 40px;
+  border-radius: 30px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap:20px;
+}
+#sup{
+  position: fixed;
+  width:60px;
+  height:60px;
+  background-color: rgb(54, 55, 55);
+  top:30px;
+  left: 40px;
+  border-radius: 100%;
+  background-image: url('https://www.shutterstock.com/image-vector/chat-bot-icon-virtual-smart-600nw-2478937555.jpg');
+  background-size: cover;
+}
+#hlt{
+  position: relative;
+  width:40px;
+  height:40px;
+  border-radius: 100%;
+  background-image: url('https://cdn-icons-png.flaticon.com/512/5153/5153539.png');
+  background-size: cover;
+  top: 20px;
+}
+#sum{
+  position: relative;
+  width:40px;
+  height:40px;
+  border-radius: 100%;
+  background-image: url('https://cdn-icons-png.flaticon.com/512/8820/8820688.png');
+  background-size: cover;
+  top: 20px;
+}
+#trsl{
+  position: relative;
+  width:40px;
+  height:40px;
+  border-radius: 100%;
+  background-image: url('https://cdn-icons-png.flaticon.com/512/9628/9628122.png');
+  background-size: cover;
+  top: 20px;
+}
+#col{
+  position: relative;
+  width:40px;
+  height:40px;
+  border-radius: 100%;
+  background-image: url('https://e7.pngegg.com/pngimages/425/931/png-clipart-computer-icons-color-picker-icon-resume-color-thumbnail.png');
+  background-size: cover;
+  top: 20px;
+}
+#clrsel{
+  position: fixed;
+  width:60px;
+  height:700px;
+  background-color: rgb(54, 55, 55);
+  top:120px;
+  left: 110px;
+  border-radius: 30px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap:20px;
+}
