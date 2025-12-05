@@ -1,4 +1,23 @@
+let loading=true
+let BmArray=[]
+const BookMarks = document.createElement("div")
+BookMarks.id="BookMarks"
+document.body.appendChild(BookMarks) // making bookmark storage
+const AddBk = document.createElement("div")
+AddBk.id ="AddBk"
+document.body.appendChild(AddBk) // for Entering Book Marks
+
+
 if(!document.getElementById("barrr")){ // it creates the whole extension division on a webpage if its not present already
+  BmArray=[]
+  chrome.storage.local.get(["marks"],(result)=>{ // ITS A ASYNC function so , .forEach must be inside the callback
+    BmArray= result.marks || [];// if response does not comes from result , empty array is assigned
+  loading=true
+  BmArray.forEach((bm)=>{
+    AddBookMark(bm)
+  })
+  loading=false
+})
   const sup = document.createElement("div")
   sup.id="sup";
   document.body.appendChild(sup)
@@ -25,16 +44,7 @@ if(!document.getElementById("barrr")){ // it creates the whole extension divisio
   bk.id="bk"
   newDiv.appendChild(bk)
 }
-// if(localStorage.getItem("marked")!==null){
-//   let Reciver=localStorage.getItem("marked")
-//   let BmArray =JSON.parse(Reciver)
-// }else{
-//   let BmArray=[]
-// }
-// BmArray.forEach((bm)=>{
-//   AddBookMark(bm)
-// })
-let recieve = localStorage.getItem("marks")
+
 let currcol="#f6e54cff" // default color
 let hlton=false // highlighter button on or off tgle
 let visible=false // visibility of bar
@@ -50,13 +60,6 @@ let bk = document.getElementById("bk")
 const colorselection = document.createElement('div')
 colorselection.id="clrsel"
 document.body.appendChild(colorselection) //making color selection division
-
-const BookMarks = document.createElement("div")
-BookMarks.id="BookMarks"
-document.body.appendChild(BookMarks) // making bookmark storage
-const AddBk = document.createElement("div")
-AddBk.id ="AddBk"
-document.body.appendChild(AddBk) // for Entering Book Marks
 
 supr.addEventListener("click",()=>{ // visibility of whole popup bar
   if(!visible){
@@ -141,22 +144,24 @@ bk.addEventListener("click",()=>{
 
 function AddBookMark(str){
   const newDiv = document.createElement("div")
-  // BmArray.push(str)
+  if(!loading){
+  BmArray.push(str)
+  chrome.storage.local.set({"marks":BmArray})
+  }
   newDiv.className="marked"
-  newDiv.innerHTML=`${str}`
+  newDiv.textContent=`${str}`
   BookMarks.appendChild(newDiv)
   newDiv.addEventListener("click",()=>{
     if(del){
       newDiv.remove()
-      // const index = BmArray.indexOf(str);
-      // if (index !== -1) {
-      //   BmArray.splice(index, 1);
-      // }
-      // localStorage.setItem("marked",JSON.toString(BmArray))
+      const index = BmArray.indexOf(str);
+      if (index !== -1) {
+        BmArray.splice(index, 1);
+      }
+      chrome.storage.local.set({"marks":BmArray})
 
     }
   })
-  // localStorage.setItem("marked",JSON.toString(BmArray))
 }
 
 const InputBk = document.createElement("input")
@@ -164,11 +169,11 @@ InputBk.id="InputBk"
 AddBk.appendChild(InputBk)
 const delToggle = document.createElement("div")
 delToggle.id="delToggle"
-delToggle.innerHTML="delete"
+delToggle.textContent="delete"
 AddBk.appendChild(delToggle)
 const addWeb = document.createElement("div")
 addWeb.id="addWeb"
-addWeb.innerHTML="Bookmark web"
+addWeb.textContent="Bookmark web"
 AddBk.appendChild(addWeb)
 
 InputBk.addEventListener("keydown",(e)=>{
