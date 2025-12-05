@@ -3,7 +3,9 @@
   "name": "WebWaybar",
   "version": "1.0",
   "description": "Waybar-style overlay on every webpage",
-  "permissions": [],
+  "permissions": [
+    "storage"
+  ],
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
