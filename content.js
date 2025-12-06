@@ -79,7 +79,7 @@ supr.addEventListener("click",()=>{ // visibility of whole popup bar
 hlt.addEventListener("click",()=>{
   if(!hlton){
     hlton=true
-    hlt.style.border="3px solid yellowgreen"
+    hlt.style.border="3px solid cyan"
   }
   else{
     hlton=false
@@ -169,10 +169,12 @@ InputBk.id="InputBk"
 AddBk.appendChild(InputBk)
 const delToggle = document.createElement("div")
 delToggle.id="delToggle"
+delToggle.className="ad"
 delToggle.textContent="delete"
 AddBk.appendChild(delToggle)
 const addWeb = document.createElement("div")
 addWeb.id="addWeb"
+addWeb.className="ad"
 addWeb.textContent="Bookmark web"
 AddBk.appendChild(addWeb)
 
