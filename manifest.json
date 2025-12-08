@@ -1,13 +1,14 @@
 {
   "manifest_version": 3,
-  "name": "WebWaybar",
+  "name": "TextMate",
   "version": "1.0",
-  "description": "Waybar-style overlay on every webpage",
+  "description": "Smart Reading Web-Assistant",
   "permissions": [
     "storage"
   ],
   "host_permissions":[
-    "https://generativelanguage.googleapis.com/*"
+    "https://generativelanguage.googleapis.com/*",
+    "https://openrouter.ai/api/v1/chat/completions"
   ],
   "content_scripts": [
     {

@@ -1,6 +1,7 @@
 let loading=true
 let BmArray=[]
-const API_KEY="GET_A_API_FROM_GOOGLE_API_STORE"
+const GEMINI_API_KEY="Get it from google api store"
+const DEEPSEAK_API_KEY="get it from openRouter or official deepseak api"
 const BookMarks = document.createElement("div")
 BookMarks.id="BookMarks"
 document.body.appendChild(BookMarks) // making bookmark storage
@@ -214,8 +215,8 @@ addWeb.addEventListener("click",()=>{
   AddBookMark(`${window.location.href}`)
 })
 
-async function askAI(txt) {
-const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`,{
+async function askgemini(txt) {
+const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`,{
   method:"POST",
   headers:{"Content-type": "application/json"},
   body: JSON.stringify({
@@ -236,7 +237,30 @@ else{
 
 
 }
+async function askDeepSeek(txt) {
+  const res = await fetch("https://openrouter.ai/api/v1/chat/completions",{
+    method:"POST",
+    headers:{
+      "Content-type":"application/json",
+      "Authorization":`Bearer ${DEEPSEAK_API_KEY}`
+    },
+    body:JSON.stringify({
+      "model":"tngtech/deepseek-r1t2-chimera:free",
+      "messages":[
+        {"role":"user","content":`${txt}`},
+      ],
+      "stream":false
+    })
+  })
+  const data = await res.json()
+  if(data.choices){
+    AiResponse.textContent=`${data.choices[0].message.content}`
+  }
+  else{
+    AiResponse.textContent=`gaya beta tera api`
+  }
 
+}
 // AI ASSISTANT PART//
 gemAI.addEventListener("click",()=>{
   if(!gemAreaVisible){
@@ -256,12 +280,48 @@ gemAI.addEventListener("click",()=>{
 const AskArea = document.createElement("input")
 AskArea.id="AskArea"
 gemArea.append(AskArea)
+let gemini=false
+let deepseek=false
+const gemToggle = document.createElement("div")
+gemToggle.id="gemTog"
+gemToggle.className="Tog"
+
+gemArea.appendChild(gemToggle)
+
+const deepToggle = document.createElement("div")
+deepToggle.id="deepTog"
+deepToggle.className="Tog"
+
+gemArea.appendChild(deepToggle)
 
 AskArea.addEventListener("keydown",(e)=>{
 if(e.key==="Enter" && (AskArea.value)){
-    askAI(AskArea.value)
+    if(gemini){
+    askgemini(AskArea.value)
     AskArea.value=""
+    }
+    else if(deepseek){
+      askDeepSeek(AskArea.value)
+      AskArea.value=""
+    }
+    else{
+      AiResponse.textContent="Please Select a model"
+    }
   }
+})
+
+gemToggle.addEventListener("click",()=>{
+  gemini=true
+  deepseek=false
+  gemToggle.style.border="2px solid cyan"
+  deepToggle.style.border="none"
+})
+
+deepToggle.addEventListener("click",()=>{
+  gemini=false
+  deepseek=true
+  gemToggle.style.border="none"
+  deepToggle.style.border="2px solid cyan"
 })
 
 
