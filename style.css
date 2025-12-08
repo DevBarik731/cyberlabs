@@ -2,7 +2,7 @@
   position: fixed;
   z-index: 2147483647;
   width:60px;
-  height:500px;
+  height:260px;
   background:linear-gradient(to bottom,black,rgb(93, 93, 93));
   top:120px;
   left: 40px;
@@ -33,24 +33,6 @@
   background-size: cover;
   top: 20px;
 }
-#sum{
-  position: relative;
-  width:40px;
-  height:40px;
-  border-radius: 100%;
-  background-image: url('https://cdn-icons-png.flaticon.com/512/8820/8820688.png');
-  background-size: cover;
-  top: 20px;
-}
-#trsl{
-  position: relative;
-  width:40px;
-  height:40px;
-  border-radius: 100%;
-  background-image: url('https://cdn-icons-png.flaticon.com/512/9628/9628122.png');
-  background-size: cover;
-  top: 20px;
-}
 #col{
   position: relative;
   width:40px;
@@ -73,6 +55,15 @@
   flex-direction: column;
   align-items: center;
   gap:20px;
+}
+#gemAI{
+  position: relative;
+  width:40px;
+  height:40px;
+  border-radius: 100%;
+  background-image: url('https://brandlogos.net/wp-content/uploads/2025/03/gemini_icon-logo_brandlogos.net_aacx5.png');
+  background-size: cover;
+  top: 20px;
 }
 #bk{
   position: relative;
@@ -182,4 +173,40 @@
 }
 .ad:hover{
   box-shadow: 0 0 5px rgba(235, 235, 235,0.4);
+}
+
+
+#gemArea{
+  position: fixed;
+  z-index: 2147483647;
+  width:330px;
+  height: 700px;
+  background-color: black;
+  top:120px;
+  left: 110px;
+  border-radius: 4px;
+  display: none;
+}
+#AiResponse{
+  position: absolute;
+  width:280px;
+  left: 10px;
+  height: 470px;
+  top: 10px;
+  padding:15px;
+  color:white;
+  border-radius: 4px;
+  background-color: rgb(47, 47, 47);
+  overflow-y:auto;
+  scrollbar-width: none;
+}
+#AskArea{
+  position: absolute;
+  width: 270px;
+  height:35px;
+  border-radius: 10px;
+  overflow-x: auto;
+  font-size: large;
+  left:25px;
+  top:530px;
 }
