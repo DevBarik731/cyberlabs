@@ -1,5 +1,6 @@
 let loading=true
 let BmArray=[]
+const API_KEY="GET_A_API_FROM_GOOGLE_API_STORE"
 const BookMarks = document.createElement("div")
 BookMarks.id="BookMarks"
 document.body.appendChild(BookMarks) // making bookmark storage
@@ -18,31 +19,29 @@ if(!document.getElementById("barrr")){ // it creates the whole extension divisio
   })
   loading=false
 })
-  const sup = document.createElement("div")
+  const sup = document.createElement("div") // super key to make bar visible
   sup.id="sup";
   document.body.appendChild(sup)
-  const newDiv=document.createElement("div")
+
+  const newDiv=document.createElement("div") // bar division
   newDiv.id="barrr";
   document.body.appendChild(newDiv)
-  const hlt=document.createElement("div")
+
+  const hlt=document.createElement("div") // highliter button
   hlt.id="hlt";
-  
   newDiv.appendChild(hlt)
-  const sum=document.createElement("div")
-  sum.id="sum";
-  
-  newDiv.appendChild(sum)
-  const col=document.createElement("div")
+
+  const col=document.createElement("div") // color selection button
   col.id="col";
-  
   newDiv.appendChild(col)
-  const trsl=document.createElement("div")
-  trsl.id="trsl";
-  
-  newDiv.appendChild(trsl)
-  const bk=document.createElement("div")
+
+  const bk=document.createElement("div") // bookmark button
   bk.id="bk"
   newDiv.appendChild(bk)
+
+  const gemAI = document.createElement("div") // Ai assistant button
+  gemAI.id="gemAI"
+  newDiv.appendChild(gemAI)
 }
 
 let currcol="#f6e54cff" // default color
@@ -51,15 +50,25 @@ let visible=false // visibility of bar
 let colbar=false // visibility of color selection area
 let bkpop=false // visibility of bookmark popup
 let del = false // toggle to delete bookmarks
+let gemAreaVisible=false // Ai box visibility
 let hlt = document.getElementById("hlt")
 let bar = document.getElementById("barrr")
 let supr = document.getElementById("sup")
 let col = document.getElementById("col")
 let bk = document.getElementById("bk")
+let gemAI=document.getElementById("gemAI")
 
 const colorselection = document.createElement('div')
 colorselection.id="clrsel"
 document.body.appendChild(colorselection) //making color selection division
+
+const gemArea = document.createElement("div")
+gemArea.id="gemArea"
+document.body.appendChild(gemArea) // AI assistant box
+
+const AiResponse = document.createElement("div")
+AiResponse.id="AiResponse"
+gemArea.appendChild(AiResponse)
 
 supr.addEventListener("click",()=>{ // visibility of whole popup bar
   if(!visible){
@@ -71,6 +80,8 @@ supr.addEventListener("click",()=>{ // visibility of whole popup bar
      colorselection.style.display="none"
      BookMarks.style.display="none"
      AddBk.style.display="none"
+     gemArea.style.display="none"
+     gemAreaVisible=false
      colbar=false
      bkpop=false
      visible=false
@@ -110,6 +121,8 @@ col.addEventListener("click",()=>{
   BookMarks.style.display="none"
   AddBk.style.display="none"
      bkpop=false
+  gemArea.style.display="none"
+     gemAreaVisible=false
 }else{
   colbar=false
   colorselection.style.display="none"
@@ -134,6 +147,8 @@ bk.addEventListener("click",()=>{
     bkpop=true
     colbar=false
     colorselection.style.display="none"
+    gemArea.style.display="none"
+     gemAreaVisible=false
   }
   else{
      BookMarks.style.display="none"
@@ -164,6 +179,7 @@ function AddBookMark(str){
   })
 }
 
+// BOOKMARK DIVISON Insider buttons//
 const InputBk = document.createElement("input")
 InputBk.id="InputBk"
 AddBk.appendChild(InputBk)
@@ -177,6 +193,7 @@ addWeb.id="addWeb"
 addWeb.className="ad"
 addWeb.textContent="Bookmark web"
 AddBk.appendChild(addWeb)
+// ---------------------------------- //
 
 InputBk.addEventListener("keydown",(e)=>{
   if(e.key==="Enter" && (InputBk.value)){
@@ -196,4 +213,56 @@ delToggle.addEventListener("click",()=>{
 addWeb.addEventListener("click",()=>{
   AddBookMark(`${window.location.href}`)
 })
+
+async function askAI(txt) {
+const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`,{
+  method:"POST",
+  headers:{"Content-type": "application/json"},
+  body: JSON.stringify({
+    contents:[{parts:[{text:txt}]}],
+  })
+})
+const data = await res.json()
+if(data.candidates){
+let reply=data.candidates[0].content.parts[0].text
+AiResponse.textContent=`${reply}`
+}
+else if(data.error.message){
+  AiResponse.textContent=`${data.error.message}`
+}
+else{
+  AiResponse.textContent=`tera api gaya`
+}
+
+
+}
+
+// AI ASSISTANT PART//
+gemAI.addEventListener("click",()=>{
+  if(!gemAreaVisible){
+    gemArea.style.display="flex"
+     gemAreaVisible=true
+    colorselection.style.display="none"
+     BookMarks.style.display="none"
+     AddBk.style.display="none"
+     colbar=false
+     bkpop=false
+  }else{
+    gemArea.style.display="none"
+     gemAreaVisible=false
+  }
+})
+
+const AskArea = document.createElement("input")
+AskArea.id="AskArea"
+gemArea.append(AskArea)
+
+AskArea.addEventListener("keydown",(e)=>{
+if(e.key==="Enter" && (AskArea.value)){
+    askAI(AskArea.value)
+    AskArea.value=""
+  }
+})
+
+
 
