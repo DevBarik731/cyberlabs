@@ -230,3 +230,23 @@
   top: 590px;
   left: 75px;
 }
+#WebSummary{
+  position: absolute;
+  width: 130px;
+  height: 20px;
+  border-radius: 5px;
+  text-align: center;
+  color: aliceblue;
+  background-color: rgb(66, 66, 66);
+  top: 660px;
+  left: 15px;
+}
+.Tog:hover{
+  box-shadow: 0 0 4px rgb(0, 255, 255);
+}
+#WebSummary:hover{
+  background-color: rgb(0, 204, 255);
+  color:black;
+  border:solid rgb(0, 204, 255) 1px;
+  box-shadow: 0 0 4px rgb(0, 255, 255);
+}

@@ -3,6 +3,12 @@
   "name": "TextMate",
   "version": "1.0",
   "description": "Smart Reading Web-Assistant",
+  "icons":{
+    "16": "image/bot-16.png",
+    "32": "image/bot-32.png",
+    "48": "image/bot-48.png",
+    "128": "image/bot-128.png"
+  },
   "permissions": [
     "storage"
   ],
