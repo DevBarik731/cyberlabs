@@ -8,9 +8,9 @@
 
 
 ###SOURCES:
--Chrome Extension:
-  -Docs:https://developer.chrome.com/docs/extensions/reference/manifest#popup-with-permissions
-  -Yt1:https://youtu.be/Zt_6UXvoKHM?si=9C322y5f6Oc0rFXP
-  -Yt2:https://youtu.be/0n809nd4Zu4?si=McdYFbqnBtrAlK1y
+- Chrome Extension:
+  - Docs:https://developer.chrome.com/docs/extensions/reference/manifest#popup-with-permissions
+  - Yt1:https://youtu.be/Zt_6UXvoKHM?si=9C322y5f6Oc0rFXP
+  - Yt2:https://youtu.be/0n809nd4Zu4?si=McdYFbqnBtrAlK1y
 
   
