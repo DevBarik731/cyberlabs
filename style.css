@@ -7,6 +7,7 @@
   top:120px;
   left: 40px;
   border-radius: 30px;
+  border: 2px solid rgb(0, 195, 255);
   display: none;
   flex-direction: column;
   align-items: center;
@@ -199,6 +200,34 @@
   background-color: rgb(47, 47, 47);
   overflow-y:auto;
   scrollbar-width: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:5px;
+
+}
+.AiMessageBox{
+  position: relative;
+  width:260px;
+  padding:15px;
+  color:white;
+  border-radius: 4px;
+  background-color: rgb(33, 32, 32);
+  border: 1px solid white;
+  overflow-y:auto;
+  scrollbar-width: none;
+  flex-shrink: 0;
+}
+.UserMessageBox{
+  position: relative;
+  width:260px;
+  padding:15px;
+  color:white;
+  border-radius: 4px;
+  background-color: rgb(11, 11, 11);
+  overflow-y:auto;
+  scrollbar-width: none;
+  flex-shrink: 0;
 }
 #AskArea{
   position: absolute;
@@ -210,6 +239,10 @@
   left:25px;
   top:530px;
 }
+input {
+  background-color: white;
+}
+
 #gemTog{
   position: absolute;
   width: 40px;
