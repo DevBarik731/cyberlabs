@@ -2,7 +2,7 @@
 
 ###HOW TO SET UP:
 - Pull this Repo, remove the README file
-- Make sure The 3 files (manifest.json,style.css and content.js) in same folder
+- Make sure The 4 files (manifest.json,style.css and content.js,images folder) in same folder
 - Go to chrome open extension manager, enable developer mode.
 - Lode unpacked and select the folder containing the 3 files.
 
@@ -20,6 +20,8 @@
 - APIs:
   - GeminiAPI:https://aistudio.google.com/app/api-keys
   - DeepSeak:https://openrouter.ai/
+  - ChatGPT:https://console.groq.com/home
   - ListOfFreeLLMapi:https://github.com/cheahjs/free-llm-api-resources
+  - CurlToFetch:https://curlconverter.com/node-fetch/
 
   

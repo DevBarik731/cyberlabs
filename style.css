@@ -251,7 +251,7 @@ input {
   background-size: cover;
   border-radius: 100%;
   top: 590px;
-  left: 15px;
+  left: 25px;
 }
 #deepTog{
   position: absolute;
@@ -261,7 +261,17 @@ input {
   background-size: cover;
   border-radius: 100%;
   top: 590px;
-  left: 75px;
+  left: 85px;
+}
+#gptTog{
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-image:url('https://static.vecteezy.com/system/resources/previews/021/608/790/non_2x/chatgpt-logo-chat-gpt-icon-on-black-background-free-vector.jpg');
+  background-size: cover;
+  border-radius: 100%;
+  top: 590px;
+  left: 145px;
 }
 #WebSummary{
   position: absolute;
