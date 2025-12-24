@@ -1,8 +1,8 @@
 let loading=true
 let BmArray=[]
-const GROQ_API_KEY="gpt key"
+const GROQ_API_KEY="gpt-oss-120b"
 ***REMOVED***
-const DEEPSEAK_API_KEY="deepseak key"
+const DEEPSEAK_API_KEY="deepSeak key"
 const BookMarks = document.createElement("div")
 BookMarks.id="BookMarks"
 document.body.appendChild(BookMarks) // making bookmark storage
@@ -367,14 +367,20 @@ WebSummary.addEventListener("click",()=>{
   UserMessageBox(`${window.location.href} Summarise this webpage in brief`)
   if(gemini){
     askgemini(`${window.location.href} Summarise this webpage in brief`)
+    processing=true
   }
   else if(deepseek){
     askDeepSeek(`${window.location.href} Summarise this webage in brief`)
+    processing=true
+  }
+  else if(chatgpt){
+    askChatGPT(`${window.location.href} Summarise this webage in brief`)
+    processing=true
   }
   else{
-    AiResponse.textContent="Please select a model"
+    AiMessageBox("Select a model")
   }
-  processing=true
+  
 })
 
 
