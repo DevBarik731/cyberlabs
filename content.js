@@ -1,11 +1,13 @@
 let loading=true
 let BmArray=[]
-const GROQ_API_KEY="gpt-oss-120b"
+const GROQ_API_KEY="chat gpt key"
 ***REMOVED***
-const DEEPSEAK_API_KEY="deepSeak key"
+const DEEPSEAK_API_KEY="Deep seak key"
+
 const BookMarks = document.createElement("div")
 BookMarks.id="BookMarks"
 document.body.appendChild(BookMarks) // making bookmark storage
+
 const AddBk = document.createElement("div")
 AddBk.id ="AddBk"
 document.body.appendChild(AddBk) // for Entering Book Marks
@@ -37,6 +39,10 @@ if(!document.getElementById("barrr")){ // it creates the whole extension divisio
   col.id="col";
   newDiv.appendChild(col)
 
+  const hltxt=document.createElement("div") // Area Where Highlited text will be shown
+  hltxt.id="hltxt";
+  newDiv.appendChild(hltxt)
+
   const bk=document.createElement("div") // bookmark button
   bk.id="bk"
   newDiv.appendChild(bk)
@@ -53,7 +59,10 @@ let colbar=false // visibility of color selection area
 let bkpop=false // visibility of bookmark popup
 let del = false // toggle to delete bookmarks
 let gemAreaVisible=false // Ai box visibility
+let HltStorageVisible=false // Visibility Of storage Area of highlights
+
 let hlt = document.getElementById("hlt")
+let hltxt = document.getElementById("hltxt")
 let bar = document.getElementById("barrr")
 let supr = document.getElementById("sup")
 let col = document.getElementById("col")
@@ -64,13 +73,17 @@ const colorselection = document.createElement('div')
 colorselection.id="clrsel"
 document.body.appendChild(colorselection) //making color selection division
 
+const HltStorageArea = document.createElement("div")
+HltStorageArea.id="HltStorageArea"
+document.body.appendChild(HltStorageArea)//Area Where Highlited texts will be stored.
+
 const gemArea = document.createElement("div")
 gemArea.id="gemArea"
 document.body.appendChild(gemArea) // AI assistant box
 
 const AiResponse = document.createElement("div")
 AiResponse.id="AiResponse"
-gemArea.appendChild(AiResponse)
+gemArea.appendChild(AiResponse)//Area Where Conversation with Chatbot will take place
 
 supr.addEventListener("click",()=>{ // visibility of whole popup bar
   if(!visible){
@@ -83,12 +96,15 @@ supr.addEventListener("click",()=>{ // visibility of whole popup bar
      BookMarks.style.display="none"
      AddBk.style.display="none"
      gemArea.style.display="none"
+     HltStorageArea.style.display="none"
+     HltStorageVisible=false
      gemAreaVisible=false
      colbar=false
      bkpop=false
      visible=false
   }
 })
+
 hlt.addEventListener("click",()=>{
   if(!hlton){
     hlton=true
@@ -99,16 +115,36 @@ hlt.addEventListener("click",()=>{
     hlt.style.border="none"
   }
 }) // this function for highlighter toggle
+
+hltxt.addEventListener("click",()=>{
+  if(!HltStorageVisible){
+    HltStorageArea.style.display="flex";
+    HltStorageVisible=true
+    colorselection.style.display="none";
+  colbar=false
+  BookMarks.style.display="none"
+  AddBk.style.display="none"
+     bkpop=false
+  gemArea.style.display="none"
+     gemAreaVisible=false
+  }
+  else{
+    HltStorageArea.style.display="none";
+    HltStorageVisible=false
+  }
+}) // Visibilty of Storage Area of highlighted text
+
 document.addEventListener("mouseup",()=>{
   if(!hlton) return;
   const sel = window.getSelection();
   if (!sel.toString()) return;
-
+  
   const r = sel.getRangeAt(0);
   const s = document.createElement("span");
   s.style.background = `${currcol}`;
   try{
     r.surroundContents(s);
+    AddHighlitedTxt(`${sel.toString()}`)
   }
   catch{
     console.log("Can't highlight that")
@@ -125,6 +161,8 @@ col.addEventListener("click",()=>{
      bkpop=false
   gemArea.style.display="none"
      gemAreaVisible=false
+  HltStorageArea.style.display="none";
+    HltStorageVisible=false
 }else{
   colbar=false
   colorselection.style.display="none"
@@ -153,6 +191,8 @@ bk.addEventListener("click",()=>{
     colorselection.style.display="none"
     gemArea.style.display="none"
      gemAreaVisible=false
+    HltStorageArea.style.display="none";
+    HltStorageVisible=false
   }
   else{
      BookMarks.style.display="none"
@@ -181,6 +221,16 @@ function AddBookMark(str){
 
     }
   })
+}
+
+function AddHighlitedTxt(str){
+  const newDiv = document.createElement("div")
+  newDiv.className="Highlights"
+  let w = Math.ceil(str.length/25)*15
+  newDiv.style.height=`${w}px`
+  newDiv.style.backgroundColor=currcol
+  newDiv.textContent=`${str}`
+  HltStorageArea.appendChild(newDiv)
 }
 
 // BOOKMARK DIVISON Insider buttons//
@@ -348,7 +398,7 @@ const newDiv = document.createElement("div")
 let w = Math.ceil(txt.length/25)*15
 newDiv.style.height=`${w}px`
 newDiv.className="AiMessageBox"
-newDiv.textContent=`AiMate:  ${txt}`
+newDiv.textContent=`𝘼𝙞𝙈𝙖𝙩𝙚:  ${txt}`
 AiResponse.appendChild(newDiv)
 } // Function to create a division for Received Messages
 function UserMessageBox(txt){
@@ -356,7 +406,7 @@ const newDiv = document.createElement("div")
 let w = Math.ceil(txt.length/25)*15
 newDiv.style.height=`${w}px`
 newDiv.className="UserMessageBox"
-newDiv.textContent=`You:  ${txt}`
+newDiv.textContent=`𝙔𝙤𝙪:  ${txt}`
 AiResponse.appendChild(newDiv)
 } // Function to create a division for User messages
 
@@ -378,7 +428,9 @@ WebSummary.addEventListener("click",()=>{
     processing=true
   }
   else{
-    AiMessageBox("Select a model")
+    setTimeout(()=>{
+        AiMessageBox(`Please Select A model`)
+      },2000)
   }
   
 })
