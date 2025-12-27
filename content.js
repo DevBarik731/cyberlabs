@@ -1,8 +1,8 @@
 let loading=true
 let BmArray=[]
-const GROQ_API_KEY="chat gpt key"
-***REMOVED***
-const DEEPSEAK_API_KEY="Deep seak key"
+const GROQ_API_KEY="REMOVED"
+const GEMINI_API_KEY="REMOVED"
+const DEEPSEAK_API_KEY="REMOVED"
 
 const BookMarks = document.createElement("div")
 BookMarks.id="BookMarks"
@@ -76,6 +76,16 @@ document.body.appendChild(colorselection) //making color selection division
 const HltStorageArea = document.createElement("div")
 HltStorageArea.id="HltStorageArea"
 document.body.appendChild(HltStorageArea)//Area Where Highlited texts will be stored.
+
+const HighlightsArea = document.createElement("div")
+HighlightsArea.id="HighlightsArea"
+HltStorageArea.appendChild(HighlightsArea)
+
+const HltDelete = document.createElement("div")
+HltDelete.id="HltDelete"
+let HltDeleteTog=false
+HltDelete.textContent="Delete"
+HltStorageArea.appendChild(HltDelete)
 
 const gemArea = document.createElement("div")
 gemArea.id="gemArea"
@@ -201,6 +211,17 @@ bk.addEventListener("click",()=>{
   }
 })// toggle for bookmark area
 
+HltDelete.addEventListener("click",()=>{
+if(!HltDeleteTog){
+    HltDeleteTog=true
+    HltDelete.style.border="2px solid white"
+  }
+  else{
+    HltDeleteTog=false
+    HltDelete.style.border="none"
+  }
+})
+
 function AddBookMark(str){
   const newDiv = document.createElement("div")
   if(!loading){
@@ -230,7 +251,12 @@ function AddHighlitedTxt(str){
   newDiv.style.height=`${w}px`
   newDiv.style.backgroundColor=currcol
   newDiv.textContent=`${str}`
-  HltStorageArea.appendChild(newDiv)
+  newDiv.addEventListener("click",()=>{
+    if(HltDeleteTog){
+      newDiv.remove()
+    }
+  })
+  HighlightsArea.appendChild(newDiv)
 }
 
 // BOOKMARK DIVISON Insider buttons//
