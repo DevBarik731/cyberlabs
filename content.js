@@ -1,8 +1,8 @@
 let loading=true
 let BmArray=[]
-// const GROQ_API_KEY=""
-// const GEMINI_API_KEY=""
-// const DEEPSEAK_API_KEY=""
+***REMOVED***
+const GEMINI_API_KEY="gemini api key"
+const DEEPSEAK_API_KEY="deepSeak api key"
 
 const BookMarks = document.createElement("div")
 BookMarks.id="BookMarks"
