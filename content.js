@@ -1,8 +1,8 @@
 let loading=true
 let BmArray=[]
-***REMOVED***
-***REMOVED***
-REMOVED
+const GROQ_API_KEY="chat gpt api key"
+const GEMINI_API_KEY="gemini key"
+const DEEPSEAK_API_KEY="deepseak api key"
 
 const BookMarks = document.createElement("div")
 BookMarks.id="BookMarks"
