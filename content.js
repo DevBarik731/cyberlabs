@@ -1,7 +1,7 @@
 let loading=true
 let BmArray=[]
 const GROQ_API_KEY="chat gpt api key"
-const GEMINI_API_KEY="gemini key"
+const GEMINI_API_KEY="gemini api key"
 const DEEPSEAK_API_KEY="deepseak api key"
 
 const BookMarks = document.createElement("div")
@@ -189,6 +189,12 @@ arr.forEach((color)=>{
     hlton=true
     currcol=color
   })
+  newColor.addEventListener("mouseenter",()=>{
+    newColor.style.border=` 3px solid ${color}`
+  })
+  newColor.addEventListener("mouseleave",()=>{
+    newColor.style.border=`none`
+  })
   colorselection.appendChild(newColor)
 })
 
@@ -242,6 +248,13 @@ function AddBookMark(str){
 
     }
   })
+  if(str.startsWith("https://")){
+    newDiv.addEventListener("click",()=>{
+      if(!del){
+      window.open(`${str}`,"_blank")
+      }
+    })
+  }
 }
 
 function AddHighlitedTxt(str){
@@ -424,7 +437,12 @@ const newDiv = document.createElement("div")
 let w = Math.ceil(txt.length/25)*15
 newDiv.style.height=`${w}px`
 newDiv.className="AiMessageBox"
-newDiv.textContent=`𝘼𝙞𝙈𝙖𝙩𝙚:  ${txt}`
+newDiv.textContent=`𝘼𝙞𝙈𝙖𝙩𝙚: `
+for(let i=0;i<txt.length;i++){
+setTimeout(()=>{
+  newDiv.textContent+=`${txt[i]}`
+},30*i)
+} //This makes a stream effect, 30*i increases delay as i increases
 AiResponse.appendChild(newDiv)
 } // Function to create a division for Received Messages
 function UserMessageBox(txt){

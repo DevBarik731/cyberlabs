@@ -51,7 +51,7 @@
   background:linear-gradient(to right,rgb(0, 0, 0),rgb(62, 62, 62) );
   top:120px;
   left: 110px;
-  border-radius: 4px;
+  border-radius: 10px;
   display: none;
 }
 #HighlightsArea{
@@ -62,7 +62,7 @@
   background:rgb(85, 84, 84);
   top:130px;
   left: 120px;
-  border-radius: 4px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -84,7 +84,7 @@
 }
 .Highlights{
   position: relative;
-  border-radius: 4px;
+  border-radius: 10px;
   width:290px;
   text-align: center;
   align-content: center;
@@ -144,7 +144,7 @@
   background:linear-gradient(to right,rgb(0, 0, 0),rgb(62, 62, 62) );
   top:120px;
   left: 110px;
-  border-radius: 4px;
+  border-radius: 10px;
   display: none;
   flex-direction: column;
   align-items: center;
@@ -160,7 +160,7 @@
   background:linear-gradient(to right,rgb(0, 0, 0),rgb(62, 62, 62) );
   top: 425px;
   left: 110px;
-  border-radius: 4px;
+  border-radius: 10px;
   display: none;
 }
 #InputBk{
@@ -204,16 +204,13 @@
   top:20px;
   border-radius: 100%;
 }
-.color:hover{
-  border:solid White 3px;
-}
 #sup:hover{
   box-shadow: 0 0 8px rgba(14, 46, 252,0.7);
 }
 
 .marked{
   position: relative;
-  border-radius: 4px;
+  border-radius: 10px;
   background-color: rgb(175, 174, 172);
   width:300px;
   height: 50px;
@@ -246,7 +243,7 @@
   background-color: black;
   top:120px;
   left: 110px;
-  border-radius: 4px;
+  border-radius: 10px;
   display: none;
 }
 #AiResponse{
@@ -257,7 +254,7 @@
   top: 10px;
   padding:15px;
   color:white;
-  border-radius: 4px;
+  border-radius: 10px;
   background-color: rgb(47, 47, 47);
   overflow-y:auto;
   scrollbar-width: none;
@@ -272,7 +269,7 @@
   width:260px;
   padding:15px;
   color:white;
-  border-radius: 4px;
+  border-radius: 10px;
   background-color: rgb(33, 32, 32);
   border: 1px solid white;
   overflow-y:auto;
@@ -284,7 +281,7 @@
   width:260px;
   padding:15px;
   color:white;
-  border-radius: 4px;
+  border-radius: 10px;
   background-color: rgb(11, 11, 11);
   overflow-y:auto;
   scrollbar-width: none;
