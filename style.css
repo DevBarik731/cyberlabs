@@ -12,6 +12,7 @@
   flex-direction: column;
   align-items: center;
   gap:20px;
+
 }
 #sup{
   position: fixed;
@@ -24,6 +25,8 @@
   border-radius: 100%;
   background-image: url('https://www.shutterstock.com/image-vector/chat-bot-icon-virtual-smart-600nw-2478937555.jpg');
   background-size: cover;
+  transform: scale(1);
+  transition: transform 0.3s ease;
 }
 #hlt{
   position: relative;
@@ -53,6 +56,7 @@
   left: 110px;
   border-radius: 10px;
   display: none;
+  
 }
 #HighlightsArea{
   position: fixed;
@@ -93,7 +97,12 @@
   bottom:10px;
   flex-shrink: 0;
   font-size: medium;
-  scrollbar-width: none
+  scrollbar-width: none;
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+.Highlights:hover{
+  transform:scale(1.05);
 }
 #col{
   position: relative;
@@ -203,9 +212,14 @@
   height:40px;
   top:20px;
   border-radius: 100%;
+  transform: scale(1);
+  transition: transform 0.3s ease ;
+}
+.color:hover{
+  transform: scale(1.2);
 }
 #sup:hover{
-  box-shadow: 0 0 8px rgba(14, 46, 252,0.7);
+  transform: scale(1.1);
 }
 
 .marked{
@@ -221,18 +235,16 @@
   flex-shrink: 0;
   font-size: large;
   scrollbar-width: none;
+  transform: scale(1);
+  transition: transform 0.3s ease ;
 }
 .marked:hover{
   background-color: rgb(0, 204, 255);
-  border:solid rgb(0, 204, 255) 3px;
+  transform: scale(1.05);
   box-shadow: 0 0 4px rgb(0, 255, 255);
 }
-#barrr:hover{
-  box-shadow: 0 0 8px rgba(0, 0, 0,0.4);
-}
-.ad:hover{
-  box-shadow: 0 0 5px rgba(235, 235, 235,0.4);
-}
+
+
 
 
 #gemArea{
@@ -342,12 +354,27 @@ input {
   top: 660px;
   left: 15px;
 }
-.Tog:hover{
-  box-shadow: 0 0 4px rgb(0, 255, 255);
+.ad{
+  transform: scale(1);
+  transition: transform 0.3s ease ;
 }
-#WebSummary:hover{
-  background-color: rgb(0, 204, 255);
-  color:black;
-  border:solid rgb(0, 204, 255) 1px;
-  box-shadow: 0 0 4px rgb(0, 255, 255);
+.ad:hover{
+  box-shadow: 0 0 5px rgba(228, 229, 229, 0.6);
+  transform: scale(1.1);
+  cursor: pointer;
+
+}
+.Tog{
+  transform: scale(1);
+  transition: transform 0.3s ease ;
+}
+.Tog:hover{
+  transform:scale(1.2);
+}
+.item{
+  transform: scale(1);
+  transition: transform 0.3s ease ;
+}
+.item:hover{
+  transform: scale(1.2);
 }

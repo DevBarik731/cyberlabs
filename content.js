@@ -33,22 +33,27 @@ if(!document.getElementById("barrr")){ // it creates the whole extension divisio
 
   const hlt=document.createElement("div") // highliter button
   hlt.id="hlt";
+  hlt.className="item";
   newDiv.appendChild(hlt)
 
   const col=document.createElement("div") // color selection button
   col.id="col";
+  col.className="item";
   newDiv.appendChild(col)
 
   const hltxt=document.createElement("div") // Area Where Highlited text will be shown
   hltxt.id="hltxt";
+  hltxt.className="item";
   newDiv.appendChild(hltxt)
 
   const bk=document.createElement("div") // bookmark button
   bk.id="bk"
+  bk.className="item";
   newDiv.appendChild(bk)
 
   const gemAI = document.createElement("div") // Ai assistant button
   gemAI.id="gemAI"
+  gemAI.className="item";
   newDiv.appendChild(gemAI)
 }
 
@@ -83,6 +88,7 @@ HltStorageArea.appendChild(HighlightsArea)
 
 const HltDelete = document.createElement("div")
 HltDelete.id="HltDelete"
+HltDelete.className="ad"
 let HltDeleteTog=false
 HltDelete.textContent="Delete"
 HltStorageArea.appendChild(HltDelete)
@@ -188,12 +194,6 @@ arr.forEach((color)=>{
     hlt.style.border=`3px solid ${color}`
     hlton=true
     currcol=color
-  })
-  newColor.addEventListener("mouseenter",()=>{
-    newColor.style.border=` 3px solid ${color}`
-  })
-  newColor.addEventListener("mouseleave",()=>{
-    newColor.style.border=`none`
   })
   colorselection.appendChild(newColor)
 })
@@ -429,6 +429,7 @@ gemArea.appendChild(gptToggle)
 
 const WebSummary = document.createElement("div")
 WebSummary.id="WebSummary"
+WebSummary.className="ad"
 gemArea.appendChild(WebSummary)
 WebSummary.textContent="Web Summary"
 
